@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+// import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import {Header} from '../components/Header'
@@ -6,7 +6,7 @@ import {Navbar} from '../components/Navbar'
 import {Results} from '../components/Results'
 import requests from '../util/requests'
 
-const Home: NextPage = ({results}:any) => {
+const Home = ({results}) => {
 console.log(results)
   return (
     <div className="">
@@ -24,10 +24,10 @@ console.log(results)
 
 export default Home
 
-export async function getServerSideProps(context:any){
-  const  genre:any = context.query.genre
+export async function getServerSideProps(context){
+  const  genre = context.query.genre
 
-  const request:any = await fetch(
+  const request = await fetch(
     `https://api.themoviedb.org/3${requests[genre]?.url || requests.fetchTrending.url}`
         )
       .then(res => res.json())
